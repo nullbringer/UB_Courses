@@ -51,7 +51,7 @@ def remove_padding(image, padding_width):
 def apply_dilation(img, _structuring_element):
 
 	padding_width = int((len(_structuring_element[0])-1)/2)
-	background_value =0.
+	background_value =0
 
 
 
@@ -70,7 +70,7 @@ def apply_dilation(img, _structuring_element):
 			for x in range(0,loop_end):
 				for y in range(0,loop_end):
 					if _structuring_element[x][y] == 1 and int(padded_img[i-padding_width+x][j-padding_width+y]) ==_structuring_element[x][y]:
-						output_image[i][j] = 1.
+						output_image[i][j] = 1
 						matchFound = True
 						break
 
@@ -84,7 +84,7 @@ def apply_dilation(img, _structuring_element):
 def apply_erosion(img, _structuring_element):
 
 	padding_width = int((len(_structuring_element[0])-1)/2)
-	background_value =0.
+	background_value =0
 
 
 
@@ -110,7 +110,7 @@ def apply_erosion(img, _structuring_element):
 					break
 
 			if matchFound:
-					output_image[i][j] = 1.
+					output_image[i][j] = 1
 
 	return remove_padding(image = np.asarray(output_image), padding_width = padding_width)
 
@@ -122,7 +122,7 @@ def main():
 	noise_img = cv2.imread("original_imgs/noise.jpg", 0)
 
 	# noise.jpg only has values 0 and 255. Converting it to binary image.
-	noise_img_bin = noise_img/255
+	noise_img_bin = noise_img//255
 
 	structuring_element = 	[
 								[1, 0, 0, 0, 1],
