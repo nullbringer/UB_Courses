@@ -138,16 +138,27 @@ def main():
 	# the below methods will work for any n x n stucturing element 
 	# where n is an odd number and origin in the middle
 
-	dilated_img = apply_dilation(noise_img_bin, structuring_element)
+	# closing-opening
 
-	res_noise1 = apply_erosion(dilated_img, structuring_element)
+	step1 = apply_dilation(noise_img_bin, structuring_element)
+
+	step2 = apply_erosion(step1, structuring_element)
+
+	step3 = apply_erosion(step2, structuring_element)
+
+	res_noise1 = apply_dilation(step3, structuring_element)
 
 	write_image(res_noise1*255 , 'res_noise1')
 
+	# opening- closing
 
-	eroded_img = apply_erosion(noise_img_bin, structuring_element)
+	step1 = apply_erosion(noise_img_bin, structuring_element)
 
-	res_noise2 = apply_dilation(eroded_img, structuring_element)
+	step2 = apply_dilation(step1, structuring_element)
+
+	step3 = apply_dilation(step2, structuring_element)
+
+	res_noise2 = apply_erosion(step3, structuring_element)
 
 	write_image(res_noise2*255, 'res_noise2')
 
