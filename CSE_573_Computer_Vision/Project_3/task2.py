@@ -167,6 +167,8 @@ def main():
 
 	masked_image = apply_mask(point_img, mask)
 	
+	op = masked_image*255/np.max(masked_image)
+
 
 	
 	# apply threshold
@@ -176,14 +178,14 @@ def main():
 	for i in range(h):
 		for j in range(w):
 
-			if masked_image[i][j] < 135:
-				 masked_image[i][j] = 0
+			if op[i][j] < 45:
+				 op[i][j] = 0
+			else:
+				op[i][j] = 255
 
 
 
-	op = masked_image/np.max(masked_image)
-
-	op = op*255
+	
 
 
 	write_image(op, 'res_point')

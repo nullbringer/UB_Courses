@@ -68,10 +68,16 @@ def get_gaussian_kernel(sigma):
 
 def edge_detection_x(img):
 
+    # x_kernel = [				
+    #                 [ 0, 1, 2], 
+    #                 [ -1, 0, 1], 
+    #                 [ -2, -1 , 0] 
+    #             ] 
+
     x_kernel = [				
-                    [ 0, 1, 2], 
                     [ -1, 0, 1], 
-                    [ -2, -1 , 0] 
+                    [ -2, 0, 2], 
+                    [ -1, 0 , 1] 
                 ]  
 
     edge_x_img = convolve_img(img,x_kernel,1)
@@ -115,12 +121,12 @@ def cast_vote(accumulator, x, y):
 
         theta_rad = math.radians(theta)
 
-        p = ((x * math.cos(theta_rad)) +  (y * math.sin(theta_rad)))
+        p = int(round((x * math.cos(theta_rad)) +  (y * math.sin(theta_rad))))
         # print(p)
 
         # print(accumulator)
         if p<cl and p>-1:
-            accumulator[theta+180][int(p)] +=1
+            accumulator[theta+180][p] +=1
 
 
 
@@ -136,7 +142,7 @@ def mark_lines(max_theta, max_p, img):
     for i in range(h):
         # p = x cosθ + y sinθ
         # x = (p - y sinθ) / cosθ
-        j = int((max_p - (i * math.sin(theta_rad))) / math.cos(theta_rad))
+        j = int(round((max_p - (i * math.sin(theta_rad))) / math.cos(theta_rad)))
         if j<w and j> -1:
             img[i][j] = [0,255,0]
     return img
@@ -164,7 +170,7 @@ def main():
 
 	diagonal_length = math.ceil(math.sqrt(h**2 + w**2))
 
-	accumulator = np.zeros([360,diagonal_length*2])
+	accumulator = np.zeros([360,diagonal_length])
 
 	for i in range(h):
 		for j in range(w):
@@ -173,7 +179,7 @@ def main():
 
 
 
-	write_image(accumulator,'output/accumulator')
+	write_image(accumulator,'output/accumulator_line')
 
 
 	hough_img = cv2.imread("original_imgs/hough.jpg")
@@ -192,7 +198,7 @@ def main():
 
 
 	hough_img_blue = hough_img.copy()
-	co_p_t = np.unravel_index(np.argsort(accumulator.ravel())[-3500:], accumulator.shape)
+	co_p_t = np.unravel_index(np.argsort(accumulator.ravel())[-2800:], accumulator.shape)
 
 	for z in range(len(co_p_t[0])):
 		max_theta = co_p_t[0][z]-180
