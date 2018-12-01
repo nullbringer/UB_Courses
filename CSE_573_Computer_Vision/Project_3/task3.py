@@ -157,7 +157,7 @@ def mark_lines(max_theta, max_p, img):
 
 def main():
 
-	#task 1
+	#task 3 (a)
 
 	hough_img = cv2.imread("original_imgs/hough.jpg", 0)
 
@@ -197,6 +197,12 @@ def main():
 			hough_img_red = mark_lines(max_theta, max_p, hough_img_red)
 
 
+	
+	write_image(hough_img_red,'output/red_line')
+
+
+	# task 3(b)
+
 	hough_img_blue = hough_img.copy()
 	co_p_t = np.unravel_index(np.argsort(accumulator.ravel())[-2800:], accumulator.shape)
 
@@ -207,13 +213,9 @@ def main():
 		angle_theshold = 2
 		if abs(max_theta-145) <angle_theshold or abs(max_theta+38) <angle_theshold:
 			hough_img_blue = mark_lines(max_theta, max_p, hough_img_blue)
-	    
-
-
 
 
 	write_image(hough_img_blue,'output/blue_line')
-	write_image(hough_img_red,'output/red_line')
 
 
 
