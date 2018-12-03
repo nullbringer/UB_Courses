@@ -17,32 +17,65 @@ def write_image(img, image_name):
 
 
 
-def convolve_img(img, kernel,kernel_radius):
+def add_padding(image, padding_width, background_value):
+
+	h, w = image.shape
+
+	_padded_img = [[background_value for col in range(w + (padding_width*2))] for row in range(h + (padding_width*2))]
+
+	for i in range(h):
+		for j in range(w):
+			_padded_img[i + padding_width][j + padding_width] = image[i][j]
 
 
-	height, width = img.shape
-	output_image = [[0 for col in range(width)] for row in range(height)]
-	
-
-	# ignoring edge pixels for now.
-	# add padding zero
-
-	for i in range(kernel_radius, height-kernel_radius):
-		for j in range(kernel_radius, width-kernel_radius):
-
-			# elementwise multiplication sum
-			
-			loop_end = (kernel_radius*2)+1
-
-			sum = 0
-			for x in range(0,loop_end):
-				for y in range(0,loop_end):
-					sum += kernel[x][y] * img[i-kernel_radius+x][j-kernel_radius+y]
-
-			output_image[i][j] = sum
+	return np.asarray(_padded_img)
 
 
-	return np.asarray(output_image)
+
+def remove_padding(image, padding_width):
+
+	h, w = image.shape
+
+	_no_padded_img = [[0 for col in range(w - (padding_width*2))] for row in range(h - (padding_width*2))]
+
+	for i in range(padding_width, h-padding_width):
+		for j in range(padding_width, w-padding_width):
+			_no_padded_img[i - padding_width][j - padding_width] = image[i][j]
+
+
+	return np.asarray(_no_padded_img)
+
+
+
+
+
+def convolve_img(img, kernel,kernel_radius,  background_value=0.):
+
+    padded_img = add_padding(image = img, padding_width = kernel_radius, background_value = background_value)
+
+    height, width = img.shape
+    output_image = [[0 for col in range(width)] for row in range(height)]
+
+
+    for i in range(kernel_radius, height-kernel_radius):
+        for j in range(kernel_radius, width-kernel_radius):
+
+            # elementwise multiplication sum
+
+            loop_end = (kernel_radius*2)+1
+
+            sum = 0
+            for x in range(0,loop_end):
+                for y in range(0,loop_end):
+                    sum += kernel[x][y] * padded_img[i-kernel_radius+x][j-kernel_radius+y]
+
+            output_image[i][j] = sum
+
+
+    remove_padding(image = np.asarray(output_image), padding_width = kernel_radius)
+    return np.asarray(output_image)
+
+
 
 
 def gaussian(x, mu, sigma):
@@ -86,7 +119,7 @@ def edge_detection_x(img):
             max_val = max(max_val,edge_x_img[i][j])
 
     pos_edge_x = [[0.0 for col in range(w)] for row in range(h)]
-    print(max_val)
+    # print(max_val)
 
     for i in range(0,h):
         for j in range(1,w):
@@ -102,25 +135,58 @@ def edge_detection_x(img):
     pos_edge_x = np.asarray(pos_edge_x)
     return pos_edge_x
 
+def edge_detection_y(img, threshold):
+
+    y_kernel = [
+                [-1, -2, -1], 
+                [0, 0, 0], 
+                [1, 2 , 1] 
+                ]  
+
+    edge_y_img = convolve_img(img,y_kernel,1, background_value = 220)
+
+    # print_image(edge_x_img,'x edge')
+    h,w = edge_y_img.shape
+
+    max_val = 0
+    for i in range(0,h):
+        for j in range(1,w):
+            edge_y_img[i][j] = abs(edge_y_img[i][j])
+            max_val = max(max_val,edge_y_img[i][j])
+
+    pos_edge_y = [[0.0 for col in range(w)] for row in range(h)]
+    print(max_val)
+
+    for i in range(0,h):
+        for j in range(1,w):
+            k = (edge_y_img[i][j]/max_val)*255
+            if k>threshold:
+                pos_edge_y[i][j] = 255
+            else:
+                pos_edge_y[i][j] = 0
+            
 
 
-def cast_vote(accumulator, x, y):
+    
+    pos_edge_y = np.asarray(pos_edge_y)
+    return pos_edge_y
+
+
+def cast_vote(accumulator, x, y, p_offset):
 
     # value of theta needs to be cycled from -90 to +90 degrees and get the correspondent value of p
     # p = x cosθ + y sinθ
 
     rw,cl = accumulator.shape 
 
-    for theta in range(-180, 180):
+    for theta in range(-90, 90):
 
         theta_rad = math.radians(theta)
 
         p = int(round((x * math.cos(theta_rad)) +  (y * math.sin(theta_rad))))
         # print(p)
 
-        # print(accumulator)
-        if p<cl and p>-1:
-            accumulator[theta+180][p] +=1
+        accumulator[theta+90][p+p_offset] +=1
 
 
 
@@ -142,6 +208,44 @@ def mark_lines(max_theta, max_p, img):
     return img
 
 
+def cast_vote_circles(accumulator, x, y, radius):
+
+    rw,cl = accumulator.shape 
+    
+#     for radius in range(17,23):
+
+    for theta in range(360):
+
+        theta_rad = math.radians(theta)
+
+        a = int(round(x - (radius*math.cos(theta_rad))))
+
+        b = int(round(y + (radius*math.sin(theta_rad))))
+
+        if (a<cl and a>-1) and (b<rw and b>-1):
+            accumulator[b][a] +=1
+
+
+
+    return accumulator
+
+
+def mark_circles(a, b, img, radius):
+    
+    h, w, _ = img.shape
+            
+            
+#     for radius in range(17,23):
+    for angle in range(0, 360):
+        x = int(round(radius * math.sin(math.radians(angle)) + a))
+        y = int(round(radius * math.cos(math.radians(angle)) + b))
+
+        if (x<w and x> -1) and (y<h and y> -1):
+            img[y][x] = [0,255,255]           
+
+    return img
+
+
 
 def main():
 
@@ -158,12 +262,12 @@ def main():
 
 	diagonal_length = math.ceil(math.sqrt(h**2 + w**2))
 
-	accumulator = np.zeros([360,diagonal_length])
+	accumulator = np.zeros([180,diagonal_length*2])
 
 	for i in range(h):
 		for j in range(w):
 			if xedge[i][j] >100:
-				accumulator = cast_vote(accumulator, y=i, x=j)
+				accumulator = cast_vote(accumulator, y=i, x=j, p_offset = diagonal_length)
 
 
 
@@ -177,8 +281,8 @@ def main():
 	co_p_t = np.unravel_index(np.argsort(accumulator.ravel())[-1500:], accumulator.shape)
 
 	for z in range(len(co_p_t[0])):
-		max_theta = co_p_t[0][z]-180
-		max_p = co_p_t[1][z]
+		max_theta = co_p_t[0][z]-90
+		max_p = co_p_t[1][z]-diagonal_length
 
 		angle_theshold = 1
 		if abs(max_theta+2) <angle_theshold:
@@ -195,18 +299,62 @@ def main():
 	co_p_t = np.unravel_index(np.argsort(accumulator.ravel())[-2800:], accumulator.shape)
 
 	for z in range(len(co_p_t[0])):
-		max_theta = co_p_t[0][z]-180
-		max_p = co_p_t[1][z]
+		max_theta = co_p_t[0][z]-90
+		max_p = co_p_t[1][z]-diagonal_length
 
 		angle_theshold = 1
-		if abs(max_theta-145) <angle_theshold or abs(max_theta+36) <angle_theshold:
+		if abs(max_theta+36) <angle_theshold:
 			hough_img_blue = mark_lines(max_theta, max_p, hough_img_blue)
 
 
 	write_image(hough_img_blue,'output/blue_line')
 
 
+	#task 3(c)
+	hough_img = cv2.imread("original_imgs/hough.jpg",0)
+	simg = hough_img.copy()
+	simg = convolve_img(hough_img, get_gaussian_kernel(math.sqrt(2)),3)
+
+	xedge = edge_detection_y(simg, threshold =15)
+
+	write_image(xedge,'output/filtered')
+
+	r = 20
+
+	h, w = hough_img.shape
+
+
+	accumulator = np.zeros(hough_img.shape)
+
+	for i in range(h):
+	    for j in range(w):
+	        if xedge[i][j] !=0:
+	            
+	            accumulator = cast_vote_circles(accumulator, y=i, x=j, radius = r)
+
+
+	write_image(accumulator,'output/accumulator')
+
+	hough_img_col = cv2.imread("original_imgs/hough.jpg")
+	cirles = hough_img_col.copy()
+
+
+	co_p_t = np.unravel_index(np.argsort(accumulator.ravel())[-600:], accumulator.shape)
+	# print(co_p_t)
+
+	for z in range(len(co_p_t[0])):
+	    b = co_p_t[0][z]
+	    a = co_p_t[1][z]
+	    
+	    cirles = mark_circles(a, b, cirles, r)
+
+
+	write_image(cirles,'output/coin')
+
+
+
 
 
 
 main()
+
