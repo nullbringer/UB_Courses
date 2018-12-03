@@ -92,7 +92,8 @@ def generate_histogram(img):
 	plt.figure()
 
 	plt.plot([col for col in range(256)], counter)
-	plt.show()
+	# plt.show()
+	plt.savefig(OUTPUT_FOLDER + 'segment_histogram.png')
 
 
 def find_optimal_threshold(img, threshold, t_0 = 1, lowerbound =0):
@@ -148,6 +149,13 @@ def create_bounding_box(img):
 	write_image(rec_img, 'res_segment')
 
 
+def create_bounding_circle(img):
+
+	cv2.circle(img,(445, 249), 10, 255, 2 )
+
+	write_image(img, 'res_point')
+
+
 
 
 
@@ -155,7 +163,7 @@ def main():
 
 	############# TASK 2 (a) ###########
 
-	point_img = cv2.imread("original_imgs/point.jpg", 0)
+	point_img = cv2.imread("original_imgs/blade.jpg", 0)
 
 
 	mask = [
@@ -169,7 +177,8 @@ def main():
 	
 	op = masked_image*255/np.max(masked_image)
 
-
+	write_image(op, 'res_intermediate')
+	# print(np.unique(op))
 	
 	# apply threshold
 
@@ -178,17 +187,22 @@ def main():
 	for i in range(h):
 		for j in range(w):
 
-			if op[i][j] < 45:
+			if op[i][j] < 120:
 				 op[i][j] = 0
 			else:
 				op[i][j] = 255
+				print("point location: "+ str(i) + "," + str(j))
 
 
 
 	
+	#labeling the points after checking the output
+	create_bounding_circle(op)
+
+	
 
 
-	write_image(op, 'res_point')
+
 	
 
 
@@ -221,7 +235,6 @@ def main():
 				segment_img[i][j] = 0
 			else:
 				segment_img[i][j] = 255
-
 
 
 	create_bounding_box(segment_img)

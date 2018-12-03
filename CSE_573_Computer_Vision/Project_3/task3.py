@@ -68,12 +68,6 @@ def get_gaussian_kernel(sigma):
 
 def edge_detection_x(img):
 
-    # x_kernel = [				
-    #                 [ 0, 1, 2], 
-    #                 [ -1, 0, 1], 
-    #                 [ -2, -1 , 0] 
-    #             ] 
-
     x_kernel = [				
                     [ -1, 0, 1], 
                     [ -2, 0, 2], 
@@ -149,12 +143,6 @@ def mark_lines(max_theta, max_p, img):
 
 
 
-
-
-
-
-
-
 def main():
 
 	#task 3 (a)
@@ -192,8 +180,8 @@ def main():
 		max_theta = co_p_t[0][z]-180
 		max_p = co_p_t[1][z]
 
-		angle_theshold = 2
-		if abs(max_theta) <angle_theshold:
+		angle_theshold = 1
+		if abs(max_theta+2) <angle_theshold:
 			hough_img_red = mark_lines(max_theta, max_p, hough_img_red)
 
 
@@ -210,8 +198,8 @@ def main():
 		max_theta = co_p_t[0][z]-180
 		max_p = co_p_t[1][z]
 
-		angle_theshold = 2
-		if abs(max_theta-145) <angle_theshold or abs(max_theta+38) <angle_theshold:
+		angle_theshold = 1
+		if abs(max_theta-145) <angle_theshold or abs(max_theta+36) <angle_theshold:
 			hough_img_blue = mark_lines(max_theta, max_p, hough_img_blue)
 
 
