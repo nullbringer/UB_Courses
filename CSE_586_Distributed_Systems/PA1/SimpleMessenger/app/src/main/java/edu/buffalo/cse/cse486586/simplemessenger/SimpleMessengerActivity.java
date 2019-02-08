@@ -156,18 +156,32 @@ public class SimpleMessengerActivity extends Activity {
         protected Void doInBackground(ServerSocket... sockets) {
             ServerSocket serverSocket = sockets[0];
 
+            /* infinite while loop to accept multiple messeges */
 
             while (true) {
 
                 try {
 
+                    /*
+                     *  https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html
+                     *  The accept method waits until a client starts up and requests a connection on
+                     *  the host and port of this server.
+                     * */
+
                     Socket clientSocket = serverSocket.accept();
 
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
+                    /* Since only one line is being sent from the client side, following line reads the
+                    * input stream attached to the socket
+                    * */
+
                     String incomingMessege = bufferedReader.readLine();
 
                     if (incomingMessege != null) {
+
+                        /* publishProgress sends the retrieved string to onProgressUpdate method which updates the GUI */
+
                         publishProgress(incomingMessege);
                     }
 
@@ -240,6 +254,7 @@ public class SimpleMessengerActivity extends Activity {
                 Log.e(TAG, "remote port: " + remotePort);
                 Log.e(TAG, "msgToSend: " + msgToSend);
 
+                /* creates an output steam to the socket and write the messege to it */
 
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
