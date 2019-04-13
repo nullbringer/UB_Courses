@@ -9,6 +9,7 @@ VARIABLES AVar,   \* The last <<value, bit>> pair A decided to send.
 (***************************************************************************)
 (* Type correctness means that AVar and BVar are tuples <<d, i>> where     *)
 (* d \in Data and i \in {0, 1}.                                            *)
+(* < Alice,1>                                                              *)                              
 (***************************************************************************)
 TypeOK == /\ AVar \in Data \X {0,1}
           /\ BVar \in Data \X {0,1}
@@ -62,7 +63,7 @@ Inv == (AVar[2] = BVar[2]) => (AVar = BVar)
 FairSpec == Spec /\ WF_vars(Next) 
 =============================================================================
 \* Modification History
-\* Last modified Fri Apr 12 02:15:52 EDT 2019 by amlan
+\* Last modified Fri Apr 12 06:08:26 EDT 2019 by amlan
 \* Last modified Wed Oct 18 04:07:37 PDT 2017 by lamport
 \* Created Fri Sep 04 07:08:22 PDT 2015 by lamport
 

@@ -6,7 +6,7 @@
     <intAttribute key="dfidDepth" value="100"/>
     <booleanAttribute key="dfidMode" value="false"/>
     <intAttribute key="distributedFPSetCount" value="0"/>
-    <stringAttribute key="distributedNetworkInterface" value="192.168.1.242"/>
+    <stringAttribute key="distributedNetworkInterface" value="67.20.203.100"/>
     <intAttribute key="distributedNodesCount" value="1"/>
     <stringAttribute key="distributedTLC" value="off"/>
     <stringAttribute key="distributedTLCVMArgs" value=""/>
@@ -25,7 +25,7 @@
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="true"/>
     <listAttribute key="modelCorrectnessInvariants">
         <listEntry value="1TypeOK"/>
-        <listEntry value="0big/=4"/>
+        <listEntry value="1big/=4"/>
     </listAttribute>
     <listAttribute key="modelCorrectnessProperties"/>
     <stringAttribute key="modelExpressionEval" value=""/>
