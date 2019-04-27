@@ -2,18 +2,18 @@
 TLC2 Version 2.13 of 18 July 2018
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 127 and seed -1625111488028139664 with 2 workers on 4 cores with 608MB heap and 1365MB offheap memory [pid: 97558] (Mac OS X 10.14 x86_64, AdoptOpenJDK 11.0.2 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 14 and seed 5620946414366471823 with 2 workers on 4 cores with 608MB heap and 1365MB offheap memory [pid: 57069] (Mac OS X 10.14 x86_64, AdoptOpenJDK 11.0.2 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
 Parsing file /Users/amlan/Documents/codebase/github/UB_Courses/CSE_715_Software_Verification/tla/ABSpec.toolbox/Model_1/MC.tla
 Parsing file /Users/amlan/Documents/codebase/github/UB_Courses/CSE_715_Software_Verification/tla/ABSpec.toolbox/Model_1/ABSpec.tla
-Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/A2450370-7C79-47DD-B838-145A42F18320/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/TLC.tla
-Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/A2450370-7C79-47DD-B838-145A42F18320/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/Integers.tla
-Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/A2450370-7C79-47DD-B838-145A42F18320/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/Naturals.tla
-Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/A2450370-7C79-47DD-B838-145A42F18320/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/Sequences.tla
-Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/A2450370-7C79-47DD-B838-145A42F18320/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/FiniteSets.tla
+Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/3166AFF5-79AF-4EDC-B713-B63C37F71E06/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/TLC.tla
+Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/3166AFF5-79AF-4EDC-B713-B63C37F71E06/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/Integers.tla
+Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/3166AFF5-79AF-4EDC-B713-B63C37F71E06/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/Naturals.tla
+Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/3166AFF5-79AF-4EDC-B713-B63C37F71E06/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/Sequences.tla
+Parsing file /private/var/folders/bg/8qs8vc_s413cv5pqbkldkz0c0000gn/T/AppTranslocation/3166AFF5-79AF-4EDC-B713-B63C37F71E06/d/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.201903281902/tla2sany/StandardModules/FiniteSets.tla
 Semantic processing of module Naturals
 Semantic processing of module Integers
 Semantic processing of module ABSpec
@@ -25,7 +25,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2019-04-12 16:49:03)
+Starting... (2019-04-26 16:39:52)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
@@ -34,7 +34,7 @@ Computing initial states...
 Computed 2 initial states...
 @!@!@ENDMSG 2269 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 3 distinct states generated at 2019-04-12 16:49:04.
+Finished computing initial states: 3 distinct states generated at 2019-04-26 16:39:54.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
@@ -43,7 +43,7 @@ Model checking completed. No error has been found.
   calculated (optimistic):  val = 2.0E-17
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2019-04-12 16:49:05
+The coverage statistics at 2019-04-26 16:39:54
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <Init line 28, col 1 to line 28, col 4 of module ABSpec>: 3
@@ -115,7 +115,7 @@ The coverage statistics at 2019-04-12 16:49:05
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(4) at 2019-04-12 16:49:05: 39 states generated (2,138 s/min), 24 distinct states found (1,316 ds/min), 0 states left on queue.
+Progress(4) at 2019-04-26 16:39:54: 39 states generated (1,350 s/min), 24 distinct states found (830 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 39 states generated, 24 distinct states found, 0 states left on queue.
@@ -127,5 +127,5 @@ The depth of the complete state graph search is 4.
 The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 3).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 1653ms at (2019-04-12 16:49:05)
+Finished in 2724ms at (2019-04-26 16:39:54)
 @!@!@ENDMSG 2186 @!@!@
