@@ -31,3 +31,6 @@
 [submodule "CSE_587_Data_Intensive_Computing/P2"]
 	path = CSE_587_Data_Intensive_Computing/P2
 	url = https://github.com/urbangeek/Data-Aggregation-BigData-Analysis.git
+[submodule "CSE_715_Software_Verification/finite_state_machine"]
+	path = CSE_715_Software_Verification/finite_state_machine
+	url = https://github.com/urbangeek/FSM2.0.git
