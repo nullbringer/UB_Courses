@@ -25,3 +25,9 @@
 [submodule "CSE_586_Distributed_Systems/P4"]
 	path = CSE_586_Distributed_Systems/P4
 	url = https://github.com/urbangeek/simpleDynamoDB.git
+[submodule "CSE_587_Data_Intensive_Computing/P1"]
+	path = CSE_587_Data_Intensive_Computing/P1
+	url = https://github.com/urbangeek/Exploratory-Data-Analysis.git
+[submodule "CSE_587_Data_Intensive_Computing/P2"]
+	path = CSE_587_Data_Intensive_Computing/P2
+	url = https://github.com/urbangeek/Data-Aggregation-BigData-Analysis.git
