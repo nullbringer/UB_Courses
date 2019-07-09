@@ -1,0 +1,36 @@
+[submodule "CSE_573_Computer_Vision/P1"]
+	path = CSE_573_Computer_Vision/P1
+	url = https://github.com/urbangeek/SIFT-Keypoint-Detection.git
+[submodule "CSE_573_Computer_Vision/P2"]
+	path = CSE_573_Computer_Vision/P2
+	url = https://github.com/urbangeek/Homography-Epipolar-Geometry-Color-Quantization.git
+[submodule "CSE_573_Computer_Vision/P3"]
+	path = CSE_573_Computer_Vision/P3
+	url = https://github.com/urbangeek/Morphology-Image-Segmentation-Hough-Transform.git
+[submodule "CSE_574_Intro_to_Machine_Learning/P2"]
+	path = CSE_574_Intro_to_Machine_Learning/P2
+	url = https://github.com/urbangeek/Handwriting-Comparison.git
+[submodule "CSE_574_Intro_to_Machine_Learning/P3"]
+	path = CSE_574_Intro_to_Machine_Learning/P3
+	url = https://github.com/urbangeek/MNIST-USPS-Digit-Classification.git
+[submodule "CSE_574_Intro_to_Machine_Learning/P4"]
+	path = CSE_574_Intro_to_Machine_Learning/P4
+	url = https://github.com/urbangeek/Reinforcement-Learning-Shortest-Path.git
+[submodule "CSE_586_Distributed_Systems/P2B"]
+	path = CSE_586_Distributed_Systems/P2B
+	url = https://github.com/urbangeek/Group-messenger-Total-Fifo-order.git
+[submodule "CSE_586_Distributed_Systems/P3"]
+	path = CSE_586_Distributed_Systems/P3
+	url = https://github.com/urbangeek/simpleDHT.git
+[submodule "CSE_586_Distributed_Systems/P4"]
+	path = CSE_586_Distributed_Systems/P4
+	url = https://github.com/urbangeek/simpleDynamoDB.git
+[submodule "CSE_587_Data_Intensive_Computing/P1"]
+	path = CSE_587_Data_Intensive_Computing/P1
+	url = https://github.com/urbangeek/Exploratory-Data-Analysis.git
+[submodule "CSE_587_Data_Intensive_Computing/P2"]
+	path = CSE_587_Data_Intensive_Computing/P2
+	url = https://github.com/urbangeek/Data-Aggregation-BigData-Analysis.git
+[submodule "CSE_715_Software_Verification/finite_state_machine"]
+	path = CSE_715_Software_Verification/finite_state_machine
+	url = https://github.com/urbangeek/FSM2.0.git
