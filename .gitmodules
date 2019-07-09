@@ -7,3 +7,12 @@
 [submodule "CSE_573_Computer_Vision/P3"]
 	path = CSE_573_Computer_Vision/P3
 	url = https://github.com/urbangeek/Morphology-Image-Segmentation-Hough-Transform.git
+[submodule "CSE_574_Intro_to_Machine_Learning/P2"]
+	path = CSE_574_Intro_to_Machine_Learning/P2
+	url = https://github.com/urbangeek/Handwriting-Comparison.git
+[submodule "CSE_574_Intro_to_Machine_Learning/P3"]
+	path = CSE_574_Intro_to_Machine_Learning/P3
+	url = https://github.com/urbangeek/MNIST-USPS-Digit-Classification.git
+[submodule "CSE_574_Intro_to_Machine_Learning/P4"]
+	path = CSE_574_Intro_to_Machine_Learning/P4
+	url = https://github.com/urbangeek/Reinforcement-Learning-Shortest-Path.git
