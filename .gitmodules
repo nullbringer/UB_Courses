@@ -1,0 +1,9 @@
+[submodule "CSE_573_Computer_Vision/P1"]
+	path = CSE_573_Computer_Vision/P1
+	url = https://github.com/urbangeek/SIFT-Keypoint-Detection.git
+[submodule "CSE_573_Computer_Vision/P2"]
+	path = CSE_573_Computer_Vision/P2
+	url = https://github.com/urbangeek/Homography-Epipolar-Geometry-Color-Quantization.git
+[submodule "CSE_573_Computer_Vision/P3"]
+	path = CSE_573_Computer_Vision/P3
+	url = https://github.com/urbangeek/Morphology-Image-Segmentation-Hough-Transform.git
