@@ -16,3 +16,12 @@
 [submodule "CSE_574_Intro_to_Machine_Learning/P4"]
 	path = CSE_574_Intro_to_Machine_Learning/P4
 	url = https://github.com/urbangeek/Reinforcement-Learning-Shortest-Path.git
+[submodule "CSE_586_Distributed_Systems/P2B"]
+	path = CSE_586_Distributed_Systems/P2B
+	url = https://github.com/urbangeek/Group-messenger-Total-Fifo-order.git
+[submodule "CSE_586_Distributed_Systems/P3"]
+	path = CSE_586_Distributed_Systems/P3
+	url = https://github.com/urbangeek/simpleDHT.git
+[submodule "CSE_586_Distributed_Systems/P4"]
+	path = CSE_586_Distributed_Systems/P4
+	url = https://github.com/urbangeek/simpleDynamoDB.git
